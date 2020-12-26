@@ -1,0 +1,144 @@
+/* The emerging W3C standard
+   that is currently Firefox-only */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: gray none;
+}
+
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 20px;
+    border: 3px solid white;
+}
+
+
+body {
+
+    font-family: 'Poppins', sans-serif !important;
+    background: #F4F7FC;
+    /* background: linear-gradient(to right, #654ea3, #eaafc8); */
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0F123F;
+    /* box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); */
+    transition: all 0.4s;
+}
+
+/* custom header body */
+/* .custom-media-body {
+    border-radius: 20px;
+    background-color: white;
+    margin: 10px;
+} */
+
+.page-content {
+    width: calc(100% - 17rem);
+    margin-left: 17rem;
+    transition: all 0.4s;
+}
+
+#sidebar.active {
+    margin-left: -17rem;
+}
+
+#content.active {
+    width: 100%;
+    margin: 0;
+}
+
+.card {
+    border-radius: 30px;
+    padding: 20px;
+    border: none;
+}
+
+.btn {
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.separator {
+    margin: 3rem 0;
+    border-bottom: 1px dashed #fff;
+}
+
+.text-uppercase {
+    letter-spacing: 0.1em;
+}
+
+.text-gray {
+    color: #aaa;
+}
+
+.custom-link {
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-radius: 10px;
+    color: white;
+}
+
+.custom-input {
+    height: 3em !important;
+    background-color: #E9EFF6 !important;
+    border-radius: 10px !important;
+}
+
+.custom-link:hover {
+    background: #f3f2f2;
+    border-radius: 10px;
+    /* font-weight: bold; */
+}
+
+.custom-link.active {
+    background: #0d6efd;
+    color: #fff;
+    /* font-weight: bold; */
+}
+
+.cutom-button {
+    /* height: 3em !important; */
+    border-radius: 10px !important;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+
+/* Login Page */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -17rem;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+
+    #content {
+        width: 100;
+        margin: 0;
+    }
+
+    #content.active {
+        margin: 17rem;
+        width: calc(100% - 17rem);
+    }
+}

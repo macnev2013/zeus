@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/css/common/style.css">
+{% endblock %}
+{% block main_body %}
+<section>
+    {% include 'site_templates/sidebar.html' %}
+</section>
+
+<section>
+    <div class="page-content p-5" id="content">
+        {% include 'site_templates/navigation.html' %}
+        {% block content %}{% endblock content %}
+    </div>
+</section>
+<script src="/static/js/common/main.js"></script>
+{% endblock %}

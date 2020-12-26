@@ -1,0 +1,59 @@
+{% extends 'dashboard.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/css/common/style.css">
+{% endblock %}
+{% block title %}Settings{% endblock %}
+{% import 'bootstrap/wtf.html' as wtf %}
+  
+{% block content %}
+
+    {% from "_formhelpers.html" import render_field %}
+    
+    <h2 class="display-4 fw-bold">Git</h2>
+    <div class="row g-4 mt-3">
+
+
+        <form class="row w-75" method=post>
+            <div class="row">
+                <div class="col">
+                    {{ render_field(git_form.git_username) }}
+                </div>
+                <div class="col">
+                    {{ render_field(git_form.git_password) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex">
+                    <button class="btn btn-danger fw-bold cutom-button my-3 ml-auto" name="action" type="submit" value="delete">Delete <i class="fas fa-trash ml-2"></i></button>
+                    <button class="btn btn-primary fw-bold cutom-button my-3 ml-2" name="action" type="submit" value="save">Save <i class="fas fa-save ml-2"></i></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <hr>
+
+    <h2 class="display-4 fw-bold mt-2">AWS</h2>
+    <div class="row g-4 mt-3">
+
+        <form class="row w-75" method=post>
+            <div class="row">
+                <div class="col">
+                    {{ render_field(aws_form.aws_access_key) }} 
+                </div>
+                <div class="col">
+                    {{ render_field(aws_form.aws_secret_key) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col d-flex">
+                    <button class="btn btn-danger fw-bold cutom-button my-3 ml-auto" name="action" type="submit" value="delete">Delete <i class="fas fa-trash ml-2"></i></button>
+                    <button class="btn btn-primary fw-bold cutom-button my-3 ml-2" name="action" type="submit" value="save">Save <i class="fas fa-save ml-2"></i></button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock %}
