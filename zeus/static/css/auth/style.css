@@ -1,0 +1,28 @@
+body {
+    font-family: 'Poppins', sans-serif !important;
+    background: #0F123F !important;
+  	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+}
+
+.custom-login-container {
+    height: 100vh;
+}
+
+.custom-login-button {
+    height: 3em !important;
+    border-radius: 10px !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.custom-input {
+    height: 3em !important;
+    background-color: #E9EFF6 !important;
+    border-radius: 10px !important;
+}

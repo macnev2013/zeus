@@ -1,0 +1,11 @@
+Flask
+Flask-WTF
+flask-login
+Flask-Migrate
+Flask-Bootstrap
+flask-sqlalchemy
+Jinja2
+requests
+python-dotenv
+PyJWT
+GitPython

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/static/css/auth/style.css">
+{% endblock %}
+{% block main_body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8"></div>
+        <div class="col-4 bg-white custom-login-container shadow-lg d-flex align-items-center">
+            <div class="container ml-4"> 
+                <h2 class="display-4 fw-bold">Register</h2>
+                <p class="mb-4">Please, enter your details</p>
+                {% from "_formhelpers.html" import render_field %}
+                <form class="w-75" method=post>
+                    {{ render_field(form.username) }}
+                    {{ render_field(form.email) }}
+                    {{ render_field(form.password) }}
+                    {{ render_field(form.confirm_password) }}
+                    <div class="d-grid gap-2 col-12 mx-auto mt-4">
+                        <!-- <a href="" class="my-2 ml-2 text-decoration-none">Forgot your password?</a> -->
+                        <button class="btn btn-primary mt-4 fw-bold custom-login-button" type="submit" value=Register>Register</button>
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary mt-3 fw-bold custom-login-button">Already Registered</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

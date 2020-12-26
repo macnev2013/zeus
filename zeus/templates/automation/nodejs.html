@@ -1,0 +1,51 @@
+{% extends 'dashboard.html' %}
+{% block title %}Automation{% endblock %}
+
+{% block content %}
+<h2 class="display-4 fw-bold">Fill the details of your project</h2>
+
+<div class="row g-4 mt-3">
+    {% from "_formhelpers.html" import render_field %}
+    <form class="row w-75" method=post>
+        <div class="row">
+            <table>
+            <tr>
+                <td colspan="2">{{ render_field(nodejs_form.git_url) }} </td>
+            </tr>
+            <tr>
+                <td>{{ render_field(nodejs_form.production_branch) }}</td>
+                <td>{{ render_field(nodejs_form.development_branch) }}</td>
+            </tr>
+            <tr>
+                <td>{{ render_field(nodejs_form.project_name) }}</td>
+                <td>{{ render_field(nodejs_form.service_name) }}</td>
+            </tr>
+            <tr>
+                <td>{{ render_field(nodejs_form.system_port) }}</td>
+                <td>{{ render_field(nodejs_form.cont_port) }}</td>
+            </tr>
+            <tr>
+                <td>{{ render_field(nodejs_form.sshagent_name) }}</td>
+                <td>{{ render_field(nodejs_form.ip_address) }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {{ render_field(nodejs_form.checkbox) }}
+                    {{ render_field(nodejs_form.checkbox.label) }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ render_field(nodejs_form.jenkins_users) }}</td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col d-flex p-0">
+                <button class="btn btn-primary fw-bold cutom-button my-3" type="submit" value=Register>Automate <i class="fas fa-arrow-circle-right ml-2"></i></button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock %}

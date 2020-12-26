@@ -1,0 +1,99 @@
+{% extends 'dashboard.html' %}
+{% block title %}Automation{% endblock %}
+
+{% block content %}
+<h2 class="display-4 fw-bold">Select Technology</h2>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-3">
+    
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title fw-bold">NodeJS</h4>
+                <p class="card-text">
+                    <ul>
+                        <li>Dockerfile</li>
+                        <li>Jenkinsfile</li>
+                        <li>Jenkins Job</li>
+                        <li>Jenkins Access</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="container"></div>
+            <a href="{{ url_for('automation.nodejs') }}" class="btn btn-primary m-2 cutom-button border-0">Automate <i class="fas fa-arrow-circle-right ml-2"></i></a>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title fw-bold">Java</h4>
+                <p class="card-text">
+                    <ul>
+                        <li>Dockerfile</li>
+                        <li>Jenkinsfile</li>
+                        <li>Jenkins Job</li>
+                        <li>Jenkins Access</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="container"></div>
+            <a href="{{ url_for('automation.java') }}" class="btn btn-primary m-2 cutom-button border-0">Automate <i class="fas fa-arrow-circle-right ml-2"></i></a>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title fw-bold">PHP</h4>
+                <p class="card-text">
+                    <ul>
+                        <li>Dockerfile</li>
+                        <li>Jenkinsfile</li>
+                        <li>Jenkins Job</li>
+                        <li>Jenkins Access</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="container"></div>
+            <a href="#" class="btn btn-primary m-2 cutom-button border-0">Automate <i class="fas fa-arrow-circle-right ml-2"></i></a>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title fw-bold">React</h4>
+                <p class="card-text">
+                    <ul>
+                        <li>Dockerfile</li>
+                        <li>Jenkinsfile</li>
+                        <li>Jenkins Job</li>
+                        <li>Jenkins Access</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="container"></div>
+            <a href="#" class="btn btn-primary m-2 cutom-button border-0">Automate <i class="fas fa-arrow-circle-right ml-2"></i></a>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card h-100 shadow-lg">
+            <div class="card-body">
+                <h4 class="card-title fw-bold">NextJS</h4>
+                <p class="card-text">
+                    <ul>
+                        <li>Dockerfile</li>
+                        <li>Jenkinsfile</li>
+                        <li>Jenkins Job</li>
+                        <li>Jenkins Access</li>
+                    </ul>
+                </p>
+            </div>
+            <div class="container"></div>
+            <a href="#" class="btn btn-primary m-2 cutom-button border-0">Automate <i class="fas fa-arrow-circle-right ml-2"></i></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
