@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for website in website_list %}
+        {% for id, website in website_list %}
         <tr>
             <th scope="row">{{ website }}</th>
             <td>23.5 ms</td>
@@ -33,7 +33,8 @@
                 <span class="badge rounded-pill bg-success">UP</span>
             </td>
             <td>
-                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
+                <a class="btn btn-danger btn-sm custom-button" href="{{ url_for('uptime.remove', id=id ) }}"><i
+                        class=" fas fa-trash"></i></a>
             </td>
         </tr>
         {% endfor %}

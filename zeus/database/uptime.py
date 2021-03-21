@@ -13,8 +13,8 @@ class UptimeWebsiteDetails(UserMixin, db.Model):
     username = db.Column(db.Integer, db.ForeignKey('user.username'))
     website = db.Column(db.String(3000), index=True)
 
-    def __repr__(self):
-        return self.website
+    # def __repr__(self):
+    #     return self.website
 
     def get_websites(self, username):
         websites = UptimeWebsiteDetails.query.filter_by(username=username).all()
