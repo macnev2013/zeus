@@ -20,6 +20,9 @@ class User(UserMixin, db.Model):
 
     aws_access_key = db.Column(db.String(128))
     aws_secret_key = db.Column(db.String(128))
+    uptime_websites = db.relationship('UptimeWebsiteDetails',
+        backref=db.backref('user', lazy=True))
+
 
     def __repr__(self):
         return self.username
