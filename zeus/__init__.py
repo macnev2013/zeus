@@ -1,14 +1,20 @@
 import logging
+
 from config import Config
 from flask import Flask
-from flask_migrate import Migrate
-from flask_login import LoginManager
+from flask_apscheduler import APScheduler
 from flask_bootstrap import Bootstrap
+from flask_login import LoginManager
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 migrate = Migrate()
 bootstrap = Bootstrap()
+scheduler = APScheduler()
+scheduler.api_enabled = True
+
+LIST_OF_WEBSITE_TO_CHECK= []
 
 login = LoginManager()
 login.login_view = 'auth.login'
@@ -27,6 +33,8 @@ def create_app(config_class=Config):
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
+    scheduler.init_app(app)
+    scheduler.start()
 
     from zeus.automation import bp as automation_bp
     app.register_blueprint(automation_bp, url_prefix='/automation')

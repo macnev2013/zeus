@@ -4,6 +4,7 @@ flask-login
 Flask-Migrate
 Flask-Bootstrap
 flask-sqlalchemy
+Flask-APScheduler
 Jinja2
 requests
 python-dotenv
