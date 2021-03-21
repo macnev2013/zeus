@@ -37,6 +37,9 @@ def create_app(config_class=Config):
     from zeus.settings import bp as settings_bp
     app.register_blueprint(settings_bp, url_prefix='/settings')
 
+    from zeus.uptime import bp as uptime_bp
+    app.register_blueprint(uptime_bp, url_prefix='/uptime')
+
     return app
 
 from zeus.database import user

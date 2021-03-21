@@ -96,7 +96,7 @@ body {
 }
 
 .custom-input {
-    height: 3em !important;
+    /* height: 3em !important; */
     background-color: #E9EFF6 !important;
     border-radius: 10px !important;
 }
@@ -118,6 +118,10 @@ body {
     border-radius: 10px !important;
     padding-left: 2em;
     padding-right: 2em;
+}
+
+.hide {
+    display: none;
 }
 
 

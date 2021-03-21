@@ -1,0 +1,61 @@
+{% extends 'dashboard.html' %}
+{% block title %}Uptime{% endblock %}
+
+{% block content %}
+{% from "_formhelpers.html" import render_field %}
+
+<h2 class="display-4 fw-bold">Overview</h2>
+
+<form class="d-flex bd-highlight align-items-center" method=post>
+    <div class="p-2 flex-grow-1 bd-highlight">
+        {{ render_field(form.url) }}
+    </div>
+    <div class="p-2 bd-highlight"><button class="btn btn-primary fw-bold cutom-button" name="action" type="submit"
+            value="save">Add <i class="fas fa-save ml-2"></i></button></div>
+</form>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Site</th>
+            <th scope="col">Avrage ping</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">www.google.com</th>
+            <td>23.5 ms</td>
+            <td>
+                <span class="badge rounded-pill bg-success">UP</span>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">www.facebook.com</th>
+            <td>20.2 ms</td>
+            <td>
+                <span class="badge rounded-pill bg-success">UP</span>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">www.instagram.com</th>
+            <td>-</td>
+            <td>
+                <span class="badge rounded-pill bg-danger">DOWN</span>
+            </td>
+            <td>
+                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+{% endblock %}
