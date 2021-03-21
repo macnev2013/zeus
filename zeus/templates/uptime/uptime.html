@@ -14,7 +14,7 @@
             value="save">Add <i class="fas fa-save ml-2"></i></button></div>
 </form>
 
-{% if website_list != [] %}
+{% if websites != [] %}
 <table class="table table-hover">
     <thead>
         <tr>
@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for id, website in website_list %}
+        {% for id, website in websites %}
         <tr>
             <th scope="row">{{ website }}</th>
             <td>23.5 ms</td>
@@ -41,7 +41,9 @@
     </tbody>
 </table>
 {% else %}
-<h2 class="display-5">No website added yet..</h2>
+<div class="row">
+    <h2 class="display-6 text-center mt-5">No website added yet..</h2>
+</div>
 {% endif %}
 
 {% endblock %}

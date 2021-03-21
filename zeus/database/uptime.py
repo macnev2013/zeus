@@ -1,7 +1,7 @@
 import jwt
 from flask import current_app
 from time import time
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user
 from zeus import db, login
 import logging
 
@@ -13,10 +13,27 @@ class UptimeWebsiteDetails(UserMixin, db.Model):
     username = db.Column(db.Integer, db.ForeignKey('user.username'))
     website = db.Column(db.String(3000), index=True)
 
-    # def __repr__(self):
-    #     return self.website
+    def add_website(username, website):
+        """
+        adds website to the databse
+        """
+        website = UptimeWebsiteDetails(username=current_user.username, website=website)
+        db.session.add(website)
+        db.session.commit()
 
-    def get_websites(self, username):
-        websites = UptimeWebsiteDetails.query.filter_by(username=username).all()
-        print(websites)
+    def delete_website(username, website):
+        """
+        deletes website from the database
+        """
+        website = UptimeWebsiteDetails.query.filter_by(id=request.args.get('id')).first()
+        db.session.delete(website)
+        db.session.commit()
+
+    def get_websites_for_user(username):
+        """
+        lists website for the specific user
+        """
+        websites = (UptimeWebsiteDetails.query
+            .with_entities(UptimeWebsiteDetails.id, UptimeWebsiteDetails.website)
+            .filter_by(username=current_user.username).all())
         return websites

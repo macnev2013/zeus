@@ -12,26 +12,20 @@ REGEX = '^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-
 @login_required
 @bp.route('/', methods=['GET', 'POST'])
 def uptime():
-    print('Calling this ')
     add_site_form = UptimeAddSiteForm(request.form)
     if request.method == 'POST' and add_site_form.validate():
         if request.form.get('action') == 'save':
             website = add_site_form.url.data
             if not re.match(REGEX, website):
                 return redirect(url_for('uptime.uptime'))
-            uptime_websites = UptimeWebsiteDetails(username=current_user.username, website=website)
-            db.session.add(uptime_websites)
-            db.session.commit()
+            UptimeWebsiteDetails.add_website(username=current_user.username, website=website)
             add_site_form.url.data = ''
-    website_list = UptimeWebsiteDetails.query.with_entities(UptimeWebsiteDetails.id, UptimeWebsiteDetails.website).filter_by(username=current_user.username).all()
-    return render_template('uptime/uptime.html', page='uptime', form=add_site_form, website_list=website_list)
+    websites = UptimeWebsiteDetails.get_websites_for_user(username=current_user.username)
+    return render_template('uptime/uptime.html', page='uptime', form=add_site_form, websites=websites)
 
 
 @login_required
 @bp.route('/remove', methods=['GET', 'POST'])
 def remove():
-    uptime_websites = UptimeWebsiteDetails.query.filter_by(id=request.args.get('id'))
-    print('--------------------uptime_websites', uptime_websites)
-    db.session.delete(uptime_websites)
-    db.session.commit()
+    UptimeWebsiteDetails.delete_website(username=current_user.username, website=website)
     return redirect(url_for('uptime.uptime'))
