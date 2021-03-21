@@ -21,11 +21,11 @@ class UptimeWebsiteDetails(UserMixin, db.Model):
         db.session.add(website)
         db.session.commit()
 
-    def delete_website(username, website):
+    def delete_website(id):
         """
         deletes website from the database
         """
-        website = UptimeWebsiteDetails.query.filter_by(id=request.args.get('id')).first()
+        website = UptimeWebsiteDetails.query.filter_by(id=id).first()
         db.session.delete(website)
         db.session.commit()
 

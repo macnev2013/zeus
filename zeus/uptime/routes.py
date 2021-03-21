@@ -27,5 +27,5 @@ def uptime():
 @login_required
 @bp.route('/remove', methods=['GET', 'POST'])
 def remove():
-    UptimeWebsiteDetails.delete_website(username=current_user.username, website=website)
+    UptimeWebsiteDetails.delete_website(request.args.get('id'))
     return redirect(url_for('uptime.uptime'))
