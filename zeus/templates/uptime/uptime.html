@@ -14,18 +14,20 @@
             value="save">Add <i class="fas fa-save ml-2"></i></button></div>
 </form>
 
+{% if website_list != [] %}
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Site</th>
-            <th scope="col">Avrage ping</th>
+            <th scope="col">Average ping</th>
             <th scope="col">Status</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
+        {% for website in website_list %}
         <tr>
-            <th scope="row">www.google.com</th>
+            <th scope="row">{{ website }}</th>
             <td>23.5 ms</td>
             <td>
                 <span class="badge rounded-pill bg-success">UP</span>
@@ -34,28 +36,11 @@
                 <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
             </td>
         </tr>
-        <tr>
-            <th scope="row">www.facebook.com</th>
-            <td>20.2 ms</td>
-            <td>
-                <span class="badge rounded-pill bg-success">UP</span>
-            </td>
-            <td>
-                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">www.instagram.com</th>
-            <td>-</td>
-            <td>
-                <span class="badge rounded-pill bg-danger">DOWN</span>
-            </td>
-            <td>
-                <button class="btn btn-danger btn-sm custom-button"><i class="fas fa-trash"></i></button>
-            </td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
-
+{% else %}
+<h2 class="display-5">No website added yet..</h2>
+{% endif %}
 
 {% endblock %}
