@@ -14,7 +14,7 @@ bootstrap = Bootstrap()
 scheduler = APScheduler()
 scheduler.api_enabled = True
 
-LIST_OF_WEBSITE_TO_CHECK= []
+LIST_OF_UPTIME_WEBSITE_TO_CHECK= {}
 
 login = LoginManager()
 login.login_view = 'auth.login'
@@ -47,6 +47,16 @@ def create_app(config_class=Config):
 
     from zeus.uptime import bp as uptime_bp
     app.register_blueprint(uptime_bp, url_prefix='/uptime')
+
+    # Startup Scripts
+    from zeus.uptime.controller import uptime_cron_method
+    @app.before_first_request
+    @scheduler.task('interval', id='fetch_status', seconds=10, misfire_grace_time=10)
+    def fetch_status():
+        print('started')
+        with app.app_context():
+            uptime_cron_method()
+        print('Done')
 
     return app
 
