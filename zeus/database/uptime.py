@@ -17,15 +17,16 @@ class UptimeWebsiteDetails(UserMixin, db.Model):
         """
         adds website to the databse
         """
-        website = UptimeWebsiteDetails(username=current_user.username, website=website)
-        db.session.add(website)
-        db.session.commit()
+        if not UptimeWebsiteDetails.query.filter_by(username=username, website=website).first():
+            website = UptimeWebsiteDetails(username=username, website=website)
+            db.session.add(website)
+            db.session.commit()
 
-    def delete_website(id):
+    def delete_website(user, website):
         """
         deletes website from the database
         """
-        website = UptimeWebsiteDetails.query.filter_by(id=id).first()
+        website = UptimeWebsiteDetails.query.filter_by(username=user, website=website).first()
         db.session.delete(website)
         db.session.commit()
 
@@ -33,7 +34,14 @@ class UptimeWebsiteDetails(UserMixin, db.Model):
         """
         lists website for the specific user
         """
-        websites = (UptimeWebsiteDetails.query
+        return (UptimeWebsiteDetails.query
             .with_entities(UptimeWebsiteDetails.id, UptimeWebsiteDetails.website)
             .filter_by(username=current_user.username).all())
-        return websites
+    
+def get_websites_for_all():
+    """
+    lists website for the all user
+    """
+    return (UptimeWebsiteDetails.query
+        .with_entities(UptimeWebsiteDetails.username, UptimeWebsiteDetails.website)
+        .all())

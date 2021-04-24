@@ -1,4 +1,7 @@
 {% extends 'dashboard.html' %}
+
+{% block head %}<meta http-equiv="refresh" content="10">{% endblock head %}
+
 {% block title %}Uptime{% endblock %}
 
 {% block content %}
@@ -25,15 +28,21 @@
         </tr>
     </thead>
     <tbody>
-        {% for id, website in websites %}
+        {% for item in websites %}
         <tr>
-            <th scope="row">{{ website }}</th>
+            <th scope="row">{{ item["website"] }}</th>
             <td>23.5 ms</td>
+            {% if item["status"] == "up" %}  
             <td>
                 <span class="badge rounded-pill bg-success">UP</span>
             </td>
+            {% else %}
             <td>
-                <a class="btn btn-danger btn-sm custom-button" href="{{ url_for('uptime.remove', id=id ) }}"><i
+                <span class="badge rounded-pill bg-danger">DOWN</span>
+            </td>
+            {% endif %}
+            <td>
+                <a class="btn btn-danger btn-sm custom-button" href="{{ url_for('uptime.remove', website=item['website'] ) }}"><i
                         class=" fas fa-trash"></i></a>
             </td>
         </tr>
